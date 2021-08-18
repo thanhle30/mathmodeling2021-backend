@@ -1,0 +1,9 @@
+﻿.container h1 { color: rgb(27,77,130); }
+.content {
+    white-space: pre-line;
+    overflow: auto;
+}
+.content-table { max-height: 300px; }
+th {
+    color: rgb(27,77,130);
+}

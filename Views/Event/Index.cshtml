@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MathModeling21.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Events</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+                <span style="background-color:@item.Status.Color" class="badge text-white">@Html.DisplayFor(modelItem => item.Status.Name)</span>
+            </td>
+            <td>
+                <div class="content content-table">@Html.DisplayFor(modelItem => item.Body)
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEnd)
+            </td>
+            <td>
+                <img src="~/Images/@item.Image" style="max-height:200px; max-width: 300px" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

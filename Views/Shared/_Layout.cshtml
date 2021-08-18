@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MathModeling21</title>
+    @*<link rel="icon" href="~/Images/tmh-favicon.ico">*@
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/Images/favicon/site.webmanifest">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/all.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3" style="background-color: rgb(27,77,130);">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Images/tmh-logo-trans-bg.png" alt="" width="32" height="32" class="d-inline-block align-text-top">
+                    Toán Mô Hình 2021
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Article" asp-action="Index">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Media" asp-action="Index">Media</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="Index">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Faq" asp-action="Index">Faqs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Member" asp-action="Index">Members</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Message" asp-action="Index">Messages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Index">User</a>
+                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <form method="post" asp-action="Logout" asp-controller="Account" asp-area="">
+                                    <input type="submit" value="Log Out" class="btn btn-outline-light" />
+                                    <span class="text-white">@User.Identity.Name</span>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            var action = ViewContext.RouteData.Values["action"]?.ToString();
+                            @*<li class="nav-item">
+                <a asp-action="Register" asp-controller="Account" class="btn btn-outline-dark">Register</a>
+            </li>*@
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account" class="btn btn-outline-light">Log In</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Toán Mô Hình @*- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model MathModeling21.Models.Member
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/@Model.Image" style="max-height:300px;" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gif)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/@Model.Gif" style="max-height:300px;" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FacebookUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="@Model.FacebookUrl" target="_blank">@Model.FacebookUrl</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InstagramUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="@Model.InstagramUrl" target="_blank">@Model.InstagramUrl</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LinkedInUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="@Model.LinkedInUrl" target="_blank">@Model.LinkedInUrl</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

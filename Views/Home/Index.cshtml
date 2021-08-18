@@ -1,0 +1,19 @@
+﻿@using MathModeling21.Models;
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    var thisEve = (Event) ViewData["Event"] ?? null;
+}
+
+<div class="text-center">
+    @*<h1 class="display-4">Welcome</h1>*@
+    <h1 class="display-2" style="margin-top: 50px">Toán Mô Hình 2021</h1>
+    @if (thisEve != null)
+    {
+        <h2 style="font-size: medium;">Sự kiện gần nhất: @(thisEve.Name)
+            <span style="background-color:@thisEve.Status.Color" class="badge text-white">@thisEve.Status.Name</span>
+        </h2>
+    }
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+</div>
