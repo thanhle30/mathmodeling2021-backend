@@ -1,6 +1,7 @@
 ﻿using MathModeling21.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,21 @@ namespace MathModeling21.APIs
         [HttpGet]
         public IActionResult GetEvents()
         {
-            var events = context.Events.ToList();
+            var events = context.Events.OrderBy(e => e.DateStart).ToList();
             //foreach (Event e in events)
             //{
             //    SetStatus(e);
             //}
             return Ok(events);
+        }
+
+        [Route("big")]
+        [HttpGet]
+        public async Task<IActionResult> GetBigEvents()
+        {
+            var bigevents = await context.Events.Where(e => e.IsBigEvent).OrderBy(e => e.DateStart).ToListAsync();
+
+            return Ok(bigevents);
         }
 
         [HttpGet("{id}")]

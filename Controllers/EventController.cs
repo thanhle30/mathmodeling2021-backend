@@ -27,7 +27,7 @@ namespace MathModeling21.Controllers
         // GET: Event
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Events.ToListAsync());
+            return View(await _context.Events.OrderBy(e => e.DateStart).ToListAsync());
         }
 
         // GET: Event/Details/5
@@ -66,6 +66,8 @@ namespace MathModeling21.Controllers
                 Event e = new Event
                 {
                     Name = model.Name,
+                    IsBigEvent = model.IsBigEvent,
+                    Brief = model.Brief,
                     Body = model.Body,
                     DateStart = model.DateStart,
                     DateEnd = model.DateEnd,
@@ -117,7 +119,7 @@ namespace MathModeling21.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Body,DateStart,DateEnd,Image")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsBigEvent,Brief,Body,DateStart,DateEnd,Image")] Event @event)
         {
             if (id != @event.Id)
             {

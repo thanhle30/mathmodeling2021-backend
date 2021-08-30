@@ -33,9 +33,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td >
-                <div class="content">@Html.DisplayFor(modelItem => item.Body)
-                </div>               
+            <td>    
+                @Html.Raw(item.Body)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PostDate)
@@ -47,7 +46,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Preview</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

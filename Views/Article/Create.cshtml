@@ -45,4 +45,38 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('#Body').summernote({
+                height: 200,
+                callbacks: {
+                    onImageUpload: function (files) {
+                        sendFiles(files, "#Body")
+                    },
+                    onMediaDelete: function (target) {
+                        imgUrl = target[0].src;
+                        tempLst = imgUrl.split('/');
+                        fileName = tempLst[tempLst.length - 1];
+
+                        deleteFile(fileName);                  
+                    }
+                }
+            });         
+        });
+    </script>
+
+    @*<script>
+        var editor = new FroalaEditor('#Body');
+    </script>*@
+
+    @*old code for ckeditor*@
+    @*<script>
+        ClassicEditor
+            .create(document.querySelector('#Body'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>*@
+    
 }

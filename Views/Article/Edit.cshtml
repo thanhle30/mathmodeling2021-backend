@@ -9,7 +9,7 @@
 <h4>Article</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -53,4 +53,24 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('#Body').summernote({
+                height: 200,
+                callbacks: {
+                    onImageUpload: function (files) {
+                        sendFiles(files, "#Body")
+                    },
+                    onMediaDelete: function (target) {
+                        imgUrl = target[0].src;
+                        tempLst = imgUrl.split('/');
+                        fileName = tempLst[tempLst.length - 1];
+
+                        deleteFile(fileName);
+                    }
+                }
+            });
+        });
+    </script>
 }

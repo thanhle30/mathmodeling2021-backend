@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Brief)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Body)
             </th>
             <th>
@@ -36,6 +39,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
                 <span style="background-color:@item.Status.Color" class="badge text-white">@Html.DisplayFor(modelItem => item.Status.Name)</span>
+                @if (item.IsBigEvent)
+                {
+                    <span style="background-color:purple" class="badge text-white">Big Event</span>
+                }
+            </td>
+            <td>
+                <div class="content content-table">@Html.DisplayFor(modelItem => item.Brief)
+                </div>
             </td>
             <td>
                 <div class="content content-table">@Html.DisplayFor(modelItem => item.Body)

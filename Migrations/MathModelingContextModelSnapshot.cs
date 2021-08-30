@@ -49,7 +49,7 @@ namespace MathModeling21.Migrations
                             Body = @"This page shares my best articles to read on topics like health, happiness, creativity, productivity and more. The central question that drives my work is, “How can we live better?” To answer that question, I like to write about science-based ways to solve practical problems.
 You’ll find interesting articles to read on topics like how to stop procrastinating as well as personal recommendations like my list of the best books to read and my minimalist travel guide.Ready to dive in? You can use the categories below to browse my best articles.",
                             ImagesStr = "asffsfssfshoian-26.jpg,feffsfsf3434vietnam-travel.jpg",
-                            PostDate = new DateTime(2021, 7, 11, 14, 12, 53, 502, DateTimeKind.Local).AddTicks(4689),
+                            PostDate = new DateTime(2021, 8, 19, 10, 22, 40, 758, DateTimeKind.Local).AddTicks(8030),
                             Title = "Sample Article"
                         });
                 });
@@ -64,6 +64,9 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Brief")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateEnd")
                         .HasColumnType("datetime2");
 
@@ -72,6 +75,9 @@ You’ll find interesting articles to read on topics like how to stop procrastin
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsBigEvent")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -85,9 +91,11 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                         {
                             Id = 1,
                             Body = "This Info Session covers fundamental knowledge about math modeling. This Info Session covers fundamental knowledge about math modeling.",
+                            Brief = "This Info Session covers math modeling.",
                             DateEnd = new DateTime(2021, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateStart = new DateTime(2021, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "asffsfssfshoian-26.jpg",
+                            IsBigEvent = true,
                             Name = "Sample Event"
                         });
                 });
@@ -227,7 +235,7 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                             Email = "levinguyen@email.co",
                             FullName = "Levi Nguyen",
                             PhoneNumber = "0379111111",
-                            PostDate = new DateTime(2021, 7, 11, 14, 12, 53, 505, DateTimeKind.Local).AddTicks(523),
+                            PostDate = new DateTime(2021, 8, 19, 10, 22, 40, 761, DateTimeKind.Local).AddTicks(3642),
                             ReviewStatus = false
                         });
                 });

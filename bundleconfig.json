@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "wwwroot/lib/summernote/summernote-bs4.min.js",
+    "inputFiles": [
+      "wwwroot/lib/summernote/summernote-bs4.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/summernote/summernote-bs4.min.css",
+    "inputFiles": [
+      "wwwroot/lib/summernote/summernote-bs4.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/summernote/summernote.min.css",
+    "inputFiles": [
+      "wwwroot/lib/summernote/summernote.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/summernote/summernote.min.js",
+    "inputFiles": [
+      "wwwroot/lib/summernote/summernote.js"
+    ]
+  }
+]

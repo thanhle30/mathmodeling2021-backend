@@ -13,36 +13,48 @@
     <h4>Event</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
+            @if (Model.IsBigEvent)
+            {
+                <span style="background-color:purple" class="badge text-white">Big Event</span>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brief)
+        </dt>
+        <dd class="col-sm-10">
+            <div class="content">
+                @Html.DisplayFor(model => model.Brief)
+            </div>
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Body)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             <div class="content">
                 @Html.DisplayFor(model => model.Body)
             </div>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateStart)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateStart)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateEnd)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateEnd)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Image)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             <img src="~/Images/@Model.Image" style="max-height:200px; max-width: 300px" />
         </dd>
     </dl>

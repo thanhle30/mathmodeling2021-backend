@@ -41,6 +41,8 @@ namespace MathModeling21.Models
                 {
                     Id = 1,
                     Name = "Sample Event",
+                    IsBigEvent = true,
+                    Brief = "This Info Session covers math modeling.",
                     Body = "This Info Session covers fundamental knowledge about math modeling. This Info Session covers fundamental knowledge about math modeling.",
                     DateStart = new DateTime(2021, 7, 23),
                     DateEnd = new DateTime(2021, 7, 25),

@@ -11,35 +11,72 @@
     <h4>Article</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Body)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Body)
+        <dd class="col-sm-10" id="Body">
+            @*@Html.DisplayFor(model => model.Body)*@
+            @Html.Raw(Model.Body)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PostDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PostDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ImagesStr)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ImagesStr)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Delete" class="btn btn-danger" id="delete-post"/> |
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#delete-post").click(function () {
+                var images = $("#Body img").get().map(el => {
+                    var tempLst = el.src.split('/');
+                    return tempLst[tempLst.length - 1];
+                });
+
+                deleteImages(images);
+            });
+        });
+
+        function deleteImages(images) {
+
+            data = new FormData();
+            data.append("images", images);
+
+            $.ajax({
+                data: data,
+                type: "DELETE",
+                url: "/api/article/multi-img",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (images) {
+                    alert("Success!"); // just for testing now. DELETE when everything done
+                    alert(images);            
+                }
+            });
+        }
+    </script>
+}
+
+
