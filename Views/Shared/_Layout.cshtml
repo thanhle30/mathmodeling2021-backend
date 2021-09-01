@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/all.css" />
     <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="~/lib/summernote/summernote.min.css" />
+    @*<link rel="stylesheet" href="~/lib/summernote/summernote.min.css" />*@
+    <link rel="stylesheet" href="~/js/summernote-0.8.18-dist-thanh-center/summernote.min.css" />
 
 </head>
 <body>
@@ -99,7 +100,16 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="~/lib/summernote/summernote.min.js"></script>
+    @*<script src="~/lib/summernote/summernote.min.js"></script>*@
+    <script src="~/js/summernote-0.8.18-dist-thanh-center/summernote.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEnvironments: true,
+            }
+        };
+    </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script type="text/javascript" id="MathJax-script" async src="~/lib/mathjax/es5/tex-mml-chtml.min.js"></script>
     @RenderSection("Scripts", required: false)

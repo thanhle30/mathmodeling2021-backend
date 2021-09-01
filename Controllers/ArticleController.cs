@@ -29,14 +29,8 @@ namespace MathModeling21.Controllers
         public async Task<IActionResult> Index()
         {
             var articles = await _context.Articles.ToListAsync();
-            //foreach (Article a in articles) a.Images;
             return View(articles);
         }
-
-        //private void GetImageList(Article article)
-        //{
-        //    article.Images = article.ImagesStr.Split(",").ToList();
-        //}
 
         // GET: Article/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -70,13 +64,13 @@ namespace MathModeling21.Controllers
         {
             if (ModelState.IsValid)
             {
-                List<string> uniqueFileNames = UploadedFile(model);
+                //List<string> uniqueFileNames = UploadedFile(model);
                 Article article = new Article
                 {
-                    Title = model.Title,
+                    Title = model.Title,                
                     Body = model.Body,
                     PostDate = model.PostDate,
-                    ImagesStr = String.Join(",", uniqueFileNames.ToArray())
+                    IsPublished = model.IsPublished
                 };
                 _context.Add(article);
                 await _context.SaveChangesAsync();
@@ -85,25 +79,26 @@ namespace MathModeling21.Controllers
             return View(model);
         }
 
-        private List<string> UploadedFile(ArticleViewModel model)
-        {
-            List<string> uniqueFileNames = new List<string>();
-            if (model.Images != null && model.Images.Length > 0)
-            {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
-                foreach (IFormFile image in model.Images)
-                {
-                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
-                    uniqueFileNames.Add(uniqueFileName);
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        image.CopyTo(fileStream);
-                    }
-                }
-            }
-            return uniqueFileNames;
-        }
+        //////// No need this processing
+        //private List<string> UploadedFile(ArticleViewModel model)
+        //{
+        //    List<string> uniqueFileNames = new List<string>();
+        //    if (model.Images != null && model.Images.Length > 0)
+        //    {
+        //        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+        //        foreach (IFormFile image in model.Images)
+        //        {
+        //            var uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+        //            uniqueFileNames.Add(uniqueFileName);
+        //            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+        //            using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //            {
+        //                image.CopyTo(fileStream);
+        //            }
+        //        }
+        //    }
+        //    return uniqueFileNames;
+        //}
 
         [Authorize(Roles ="Admin")]
         // GET: Article/Edit/5
@@ -128,7 +123,7 @@ namespace MathModeling21.Controllers
         [Authorize(Roles ="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,PostDate,ImagesStr")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,PostDate,IsPublished")] Article article)
         {
             if (id != article.Id)
             {
@@ -185,14 +180,28 @@ namespace MathModeling21.Controllers
         {
             var article = await _context.Articles.FindAsync(id);
 
-            foreach (string img in article.Images)
-            {
-                string filePath = Path.Combine(webHostEnvironment.WebRootPath, "images", img);
-                System.IO.File.Delete(filePath);
-            }
+            //foreach (string img in article.Images)
+            //{
+            //    string filePath = Path.Combine(webHostEnvironment.WebRootPath, "images", img);
+            //    System.IO.File.Delete(filePath);
+            //}
 
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> ChangePublishStatus(int id)
+        {
+            var article = await _context.Articles.FindAsync(id);
+
+            if (article != null)
+            {
+                article.IsPublished = !article.IsPublished;
+                _context.Update(article);
+                _context.SaveChanges();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

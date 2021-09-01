@@ -29,8 +29,8 @@ namespace MathModeling21.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagesStr")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("PostDate")
                         .HasColumnType("datetime2");
@@ -48,8 +48,8 @@ namespace MathModeling21.Migrations
                             Id = 1,
                             Body = @"This page shares my best articles to read on topics like health, happiness, creativity, productivity and more. The central question that drives my work is, “How can we live better?” To answer that question, I like to write about science-based ways to solve practical problems.
 You’ll find interesting articles to read on topics like how to stop procrastinating as well as personal recommendations like my list of the best books to read and my minimalist travel guide.Ready to dive in? You can use the categories below to browse my best articles.",
-                            ImagesStr = "asffsfssfshoian-26.jpg,feffsfsf3434vietnam-travel.jpg",
-                            PostDate = new DateTime(2021, 8, 19, 10, 22, 40, 758, DateTimeKind.Local).AddTicks(8030),
+                            IsPublished = false,
+                            PostDate = new DateTime(2021, 9, 1, 9, 14, 45, 840, DateTimeKind.Local).AddTicks(9289),
                             Title = "Sample Article"
                         });
                 });
@@ -235,7 +235,7 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                             Email = "levinguyen@email.co",
                             FullName = "Levi Nguyen",
                             PhoneNumber = "0379111111",
-                            PostDate = new DateTime(2021, 8, 19, 10, 22, 40, 761, DateTimeKind.Local).AddTicks(3642),
+                            PostDate = new DateTime(2021, 9, 1, 9, 14, 45, 845, DateTimeKind.Local).AddTicks(3476),
                             ReviewStatus = false
                         });
                 });

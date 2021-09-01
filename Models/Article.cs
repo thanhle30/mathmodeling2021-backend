@@ -11,22 +11,13 @@ namespace MathModeling21.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Tiêu đề")]
         public string Title { get; set; }
+        [Display(Name = "Nội dung")]
         public string Body { get; set; }
+        [Display(Name = "Ngày đăng")]
         public DateTime PostDate { get; set; }
-        public string ImagesStr { get; set; }
-        [NotMapped]
-        public List<string> Images {
-            get
-            {
-                if (ImagesStr != null && ImagesStr != "")
-                {
-                    return ImagesStr.Split(",").ToList();
-                } else
-                {
-                    return new List<string>();
-                }            
-            }
-        } 
+        [Display(Name = "Publish bài")]
+        public Boolean IsPublished { get; set; }
     }
 }

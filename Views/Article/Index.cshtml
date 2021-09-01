@@ -21,9 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.PostDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagesStr)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,19 +29,22 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+                @if (item.IsPublished)
+                {
+                    <span style="background-color:purple" class="badge text-white">Published</span>
+                }
+                else
+                {
+                    <span style="background-color:gainsboro" class="badge text-white">Draft</span>
+                }
             </td>
-            <td>    
-                @Html.Raw(item.Body)
+            <td class="content"><div class="content">@Html.Raw(item.Body)</div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PostDate)
             </td>
             <td>
-                @foreach(string img in item.Images) {
-                    <img src="~/Images/@img" height="100"/>
-                }
-            </td>
-            <td>
+                <a asp-action="ChangePublishStatus" asp-route-id="@item.Id">@(item.IsPublished ? "Un-publish" : "Publish")</a> |
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Preview</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
@@ -55,5 +55,5 @@
 </table>
 
 <style>
-    .content { white-space: pre-line; max-height: 300px; overflow: auto;}
+    .content { max-height: 300px; }
 </style>

@@ -28,9 +28,9 @@
                 <span asp-validation-for="PostDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Images" class="control-label"></label>
-                <input asp-for="Images" type="file" multiple/> 
-                <span asp-validation-for="Images" class="text-danger"></span>
+                <label asp-for="IsPublished" class="control-label"></label>
+                <input id="box-publish" type="checkbox" checked=@false />
+                <input id="val-publish" type="hidden" asp-for="IsPublished" value=@false />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -47,6 +47,11 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
+        $("#box-publish").change(function () {
+            var oldval = $("#val-publish").val() == "true";
+            $("#val-publish").val(!oldval);
+        });
+
         $(document).ready(function () {
             $('#Body').summernote({
                 height: 200,
@@ -64,19 +69,5 @@
                 }
             });         
         });
-    </script>
-
-    @*<script>
-        var editor = new FroalaEditor('#Body');
-    </script>*@
-
-    @*old code for ckeditor*@
-    @*<script>
-        ClassicEditor
-            .create(document.querySelector('#Body'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>*@
-    
+    </script>    
 }

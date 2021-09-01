@@ -13,8 +13,16 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
+            @if (Model.IsPublished)
+            {
+                <span style="background-color:purple" class="badge text-white">Published</span>
+            }
+            else
+            {
+                <span style="background-color:gainsboro" class="badge text-white">Draft</span>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Body)
@@ -29,7 +37,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PostDate)
         </dd>
-        <dt class = "col-sm-2">
+        @*<dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Images)
         </dt>
         <dd class="col-sm-10">
@@ -37,7 +45,7 @@
             {
                 <img src="~/Images/@img" style="max-height:300px;"/>
             }
-        </dd>
+        </dd>*@
     </dl>
 </div>
 <div>

@@ -28,18 +28,11 @@
                 <input asp-for="PostDate" class="form-control" />
                 <span asp-validation-for="PostDate" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="ImagesStr" class="control-label"></label>
-                <input asp-for="ImagesStr" class="form-control" />
-                <span asp-validation-for="ImagesStr" class="text-danger"></span>
-            </div>*@
-            <input asp-for="ImagesStr" hidden />
             <div class="form-group">
-                @foreach (var image in Model.Images)
-                {
-                    <img src="~/Images/@image" height="300" />
-                }
-            </div>
+                <label asp-for="IsPublished" class="control-label"></label>
+                <input id="box-publish" type="checkbox" checked=@Model.IsPublished />
+                <input id="val-publish" type="hidden" asp-for="IsPublished" value=@Model.IsPublished />
+            </div>           
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -55,6 +48,11 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
+        $("#box-publish").change(function () {
+            var oldval = ($("#val-publish").val() == "true") || ($("#val-publish").val() == "True");
+            $("#val-publish").val(!oldval);
+        }); 
+
         $(document).ready(function () {
             $('#Body').summernote({
                 height: 200,
