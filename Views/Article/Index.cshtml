@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Body)
             </th>
             <th>
@@ -38,8 +41,10 @@
                     <span style="background-color:gainsboro" class="badge text-white">Draft</span>
                 }
             </td>
-            <td class="content"><div class="content">@Html.Raw(item.Body)</div>
+            <td>
+                <img src="~/Images/@item.Image" style="max-height:200px; max-width: 300px" />
             </td>
+            <td class="content"><div class="content blog-article">@Html.Raw(item.Body)</div></td>
             <td>
                 @Html.DisplayFor(modelItem => item.PostDate)
             </td>

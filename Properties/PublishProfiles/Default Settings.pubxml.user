@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAArXnpICxhY0yAjsS4wJs6OAAAAAACAAAAAAAQZgAAAAEAACAAAABSGsEa2crmPYh659ICOGzKSDWci/FDYrLncSdpUxP5PQAAAAAOgAAAAAIAACAAAAAUKY0BxrgTQGxs0XUGsK1qxm+hE6cZE5MOHjkriB/GGCAAAABgH+Ao5RxQ42bba6booQDBXUSfkY4JkUsidY3Qlo98BUAAAACEpIPzg2Oh1CJ5JVvJqngmnXIioRPbZbIon1lcyV6LUEls4zc6NoI3MIBT9zGcT3Phvz+5omXsB1Lp4lavMmVq</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAySf2GkcRAUGj0MTNoYxyOwAAAAACAAAAAAAQZgAAAAEAACAAAABoimHTOrMnTn2x3efpzb0EOHOc1nc7nbLj3bCFRnMv2QAAAAAOgAAAAAIAACAAAAAUndqzk9tPIJebHmXBdXesSLDFwxDz7HuEVDxxpfmClyAAAAAt9NkfvJcuK7jftf6ZACklDX8LTkoYVBZMNTewFMLkqEAAAAD8XjQwvL9f2npIuUUMgo5sJrp56OQ4eBhYzpU1hHx99KzBXI7qenOvdBrx40XHTGtPGLrESplHkDvvrQovAH5z</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="MathModelingContext">

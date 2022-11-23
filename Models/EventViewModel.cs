@@ -18,10 +18,14 @@ namespace MathModeling21.Models
         public string Brief { get; set; }
         [Display(Name = "Thông tin chi tiết")]
         public string Body { get; set; }
+        [Display(Name = "Địa điểm")]
+        public string Location { get; set; }
         [Display(Name = "Start Date")]
         public DateTime DateStart { get; set; }
         [Display(Name = "End Date")]
         public DateTime DateEnd { get; set; }
+        [Display(Name = "Link đăng ký")]
+        public string SignUpLink { get; set; }
         [Display(Name = "Image")]
         public IFormFile Image { get; set; }
     }

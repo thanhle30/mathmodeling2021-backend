@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IsBigEvent" class="control-label"></label>
-                <input id="box-bigevent" type="checkbox" checked=@Model.IsBigEvent/>
+                <input id="box-bigevent" type="checkbox" checked=@Model.IsBigEvent />
                 <input id="val-bigevent" type="hidden" asp-for="IsBigEvent" value=@Model.IsBigEvent />
             </div>
             <div class="form-group">
@@ -34,6 +34,11 @@
                 <span asp-validation-for="Body" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <textarea asp-for="Location" class="form-control" rows="2" cols="50"></textarea>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DateStart" class="control-label"></label>
                 <input asp-for="DateStart" class="form-control" />
                 <span asp-validation-for="DateStart" class="text-danger"></span>
@@ -42,6 +47,11 @@
                 <label asp-for="DateEnd" class="control-label"></label>
                 <input asp-for="DateEnd" class="form-control" />
                 <span asp-validation-for="DateEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SignUpLink" class="control-label"></label>
+                <input asp-for="SignUpLink" class="form-control" />
+                <span asp-validation-for="SignUpLink" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Image" />
             <img src="~/Images/@Model.Image" height="300" />

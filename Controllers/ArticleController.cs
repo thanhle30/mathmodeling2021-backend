@@ -28,7 +28,7 @@ namespace MathModeling21.Controllers
         // GET: Article
         public async Task<IActionResult> Index()
         {
-            var articles = await _context.Articles.ToListAsync();
+            var articles = await _context.Articles.OrderByDescending(a => a.PostDate).ToListAsync();
             return View(articles);
         }
 
@@ -64,11 +64,12 @@ namespace MathModeling21.Controllers
         {
             if (ModelState.IsValid)
             {
-                //List<string> uniqueFileNames = UploadedFile(model);
+                string uniqueFileName = UploadedFile(model);
                 Article article = new Article
                 {
                     Title = model.Title,                
                     Body = model.Body,
+                    Image = uniqueFileName,
                     PostDate = model.PostDate,
                     IsPublished = model.IsPublished
                 };
@@ -79,26 +80,21 @@ namespace MathModeling21.Controllers
             return View(model);
         }
 
-        //////// No need this processing
-        //private List<string> UploadedFile(ArticleViewModel model)
-        //{
-        //    List<string> uniqueFileNames = new List<string>();
-        //    if (model.Images != null && model.Images.Length > 0)
-        //    {
-        //        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
-        //        foreach (IFormFile image in model.Images)
-        //        {
-        //            var uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
-        //            uniqueFileNames.Add(uniqueFileName);
-        //            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-        //            using (var fileStream = new FileStream(filePath, FileMode.Create))
-        //            {
-        //                image.CopyTo(fileStream);
-        //            }
-        //        }
-        //    }
-        //    return uniqueFileNames;
-        //}
+        private string UploadedFile(ArticleViewModel model)
+        {
+            string uniqueFileName = null;
+            if (model.Image != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Image.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
 
         [Authorize(Roles ="Admin")]
         // GET: Article/Edit/5
@@ -114,7 +110,20 @@ namespace MathModeling21.Controllers
             {
                 return NotFound();
             }
-            return View(article);
+
+            // use ArticleViewModel because may edit image
+            ArticleViewModel articleVM = new ArticleViewModel
+            {
+                Title = article.Title,
+                Body = article.Body,
+                PostDate = article.PostDate,
+                IsPublished = article.IsPublished
+            };
+
+            ViewData["CurrentImage"] = article.Image;
+            ViewData["Id"] = article.Id;
+
+            return View(articleVM);
         }
 
         // POST: Article/Edit/5
@@ -123,15 +132,21 @@ namespace MathModeling21.Controllers
         [Authorize(Roles ="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,PostDate,IsPublished")] Article article)
+        public async Task<IActionResult> Edit(int id, string currentImg, ArticleViewModel model)
         {
-            if (id != article.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
+                string uniqueFileName = UploadedFile(model);
+                Article article = new Article
+                {
+                    Id = id,
+                    Title = model.Title,
+                    Body = model.Body,
+                    Image = uniqueFileName ?? currentImg,
+                    PostDate = model.PostDate,
+                    IsPublished = model.IsPublished
+                };
+
                 try
                 {
                     _context.Update(article);
@@ -150,7 +165,8 @@ namespace MathModeling21.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(article);
+
+            return View(model);
         }
 
         // GET: Article/Delete/5
@@ -180,11 +196,11 @@ namespace MathModeling21.Controllers
         {
             var article = await _context.Articles.FindAsync(id);
 
-            //foreach (string img in article.Images)
-            //{
-            //    string filePath = Path.Combine(webHostEnvironment.WebRootPath, "images", img);
-            //    System.IO.File.Delete(filePath);
-            //}
+            if (article.Image != null && article.Image != "")
+            {
+                string filePath = Path.Combine(webHostEnvironment.WebRootPath, "images", article.Image);
+                System.IO.File.Delete(filePath);
+            }  
 
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();

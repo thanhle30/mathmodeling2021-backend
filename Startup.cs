@@ -43,9 +43,9 @@ namespace MathModeling21
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://kuntestweb.xyz/",
-                            "http://localhost:3000",
-                            "http://page2.kuntestweb.xyz")
+                        builder.WithOrigins("http://localhost:3000",
+                            "https://toanmohinhvn.com",
+                            "https://www.toanmohinhvn.com")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });

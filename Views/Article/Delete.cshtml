@@ -26,6 +26,12 @@
             }
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/@Model.Image" style="max-height:200px; max-width: 300px" />
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Body)
         </dt>
         <dd class="col-sm-10" id="Body">

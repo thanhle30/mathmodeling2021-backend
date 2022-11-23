@@ -69,8 +69,10 @@ namespace MathModeling21.Controllers
                     IsBigEvent = model.IsBigEvent,
                     Brief = model.Brief,
                     Body = model.Body,
+                    Location = model.Location,
                     DateStart = model.DateStart,
                     DateEnd = model.DateEnd,
+                    SignUpLink = model.SignUpLink,
                     Image = uniqueFileName
                 };
                 _context.Add(e);
@@ -119,7 +121,7 @@ namespace MathModeling21.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsBigEvent,Brief,Body,DateStart,DateEnd,Image")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsBigEvent,Brief,Body,Location,DateStart,DateEnd,SignUpLink,Image")] Event @event)
         {
             if (id != @event.Id)
             {

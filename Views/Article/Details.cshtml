@@ -10,7 +10,7 @@
     <h4>Article</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class="col-sm-10">
@@ -24,28 +24,25 @@
                 <span style="background-color:gainsboro" class="badge text-white">Draft</span>
             }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/@Model.Image" style="max-height:200px; max-width: 300px" />
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Body)
         </dt>
-        <dd class = "col-sm-10 content preview">
+        <dd class="col-sm-10 content preview blog-article">
             @*@Html.DisplayFor(model => model.Body)*@
             @Html.Raw(Model.Body)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PostDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PostDate)
         </dd>
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Images)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (string img in Model.Images)
-            {
-                <img src="~/Images/@img" style="max-height:300px;"/>
-            }
-        </dd>*@
     </dl>
 </div>
 <div>

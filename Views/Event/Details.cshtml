@@ -24,16 +24,21 @@
             @Html.DisplayNameFor(model => model.Brief)
         </dt>
         <dd class="col-sm-10">
-            <div class="content">
-                @Html.DisplayFor(model => model.Brief)
+            <div class="content">@Html.DisplayFor(model => model.Brief)
             </div>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Body)
         </dt>
         <dd class="col-sm-10">
-            <div class="content">
-                @Html.DisplayFor(model => model.Body)
+            <div class="content">@Html.DisplayFor(model => model.Body)
+            </div>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class="col-sm-10">
+            <div class="content">@Html.DisplayFor(model => model.Location)
             </div>
         </dd>
         <dt class="col-sm-2">
@@ -47,6 +52,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateEnd)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SignUpLink)
+        </dt>
+        <dd class="col-sm-10">
+            <a class="link" href="@Model.SignUpLink" target="_blank">@Html.DisplayFor(model => model.SignUpLink)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Image)

@@ -15,6 +15,8 @@ namespace MathModeling21.Models
         public string Title { get; set; }
         [Display(Name = "Nội dung")]
         public string Body { get; set; }
+        [Display(Name = "Ảnh đại diện")]
+        public string Image { get; set; }
         [Display(Name = "Ngày đăng")]
         public DateTime PostDate { get; set; }
         [Display(Name = "Publish bài")]

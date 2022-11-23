@@ -33,6 +33,11 @@
                 <span asp-validation-for="Body" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <textarea asp-for="Location" class="form-control" rows="2" cols="50"></textarea>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DateStart" class="control-label"></label>
                 <input asp-for="DateStart" class="form-control" />
                 <span asp-validation-for="DateStart" class="text-danger"></span>
@@ -41,6 +46,11 @@
                 <label asp-for="DateEnd" class="control-label"></label>
                 <input asp-for="DateEnd" class="form-control" />
                 <span asp-validation-for="DateEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SignUpLink" class="control-label"></label>
+                <textarea asp-for="SignUpLink" class="form-control"></textarea>
+                <span asp-validation-for="SignUpLink" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>

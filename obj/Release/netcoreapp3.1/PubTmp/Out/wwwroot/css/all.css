@@ -7,3 +7,95 @@
 th {
     color: rgb(27,77,130);
 }
+
+/*MONTSERRAT font-family for blog articles*/
+.blog-article { font-family: "MONTSERRAT"; font-weight: 300; }
+
+/*hide "change font" functionality*/
+div.note-fontname { display: none; }
+
+/*additional fonts*/
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 900;
+    src: url("../other/font/MONTSERRAT-BLACK.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 900;
+    font-style: italic;
+    src: url("../other/font/MONTSERRAT-BLACKITALIC.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 700;
+    src: url("../other/font/MONTSERRAT-BOLD.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-style: italic;
+    font-weight: 700;
+    src: url("../other/font/MONTSERRAT-BOLDITALIC.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 800;
+    src: url("../other/font/MONTSERRAT-EXTRABOLD.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-style: italic;
+    font-weight: 800;
+    src: url("../other/font/MONTSERRAT-EXTRABOLDITALIC.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 200;
+    src: url("../other/font/MONTSERRAT-EXTRALIGHT.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-style: italic;
+    font-weight: 200;
+    src: url("../other/font/MONTSERRAT-EXTRALIGHTITALIC.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-style: italic;
+    font-weight: 400;
+    src: url("../other/font/MONTSERRAT-ITALIC.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 300;
+    src: url("../other/font/MONTSERRAT-LIGHT.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 300;
+    font-style: italic;
+    src: url("../other/font/MONTSERRAT-LIGHTITALIC.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-weight: 500;
+    src: url("../other/font/MONTSERRAT-MEDIUM.TTF") format("opentype");
+}
+
+@font-face {
+    font-family: MONTSERRAT;
+    font-style: italic;
+    font-weight: 500;
+    src: url("../other/font/MONTSERRAT-MEDIUMITALIC.TTF") format("opentype");
+}

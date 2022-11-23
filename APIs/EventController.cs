@@ -22,7 +22,7 @@ namespace MathModeling21.APIs
         [HttpGet]
         public IActionResult GetEvents()
         {
-            var events = context.Events.OrderBy(e => e.DateStart).ToList();
+            var events = context.Events.OrderByDescending(e => e.DateStart).ToList();
             //foreach (Event e in events)
             //{
             //    SetStatus(e);
@@ -50,24 +50,5 @@ namespace MathModeling21.APIs
             }
             else return BadRequest("Cannot find event");
         }
-
-        //private void SetStatus(Event e)
-        //{
-        //    if (DateTime.Now < e.DateStart)
-        //    {
-        //        e.Happening = false;
-        //        e.Ended = false;
-        //    }
-        //    else if (e.DateStart <= DateTime.Now && DateTime.Now <= e.DateEnd)
-        //    {
-        //        e.Happening = true;
-        //        e.Ended = false;
-        //    }
-        //    else
-        //    {
-        //        e.Happening = false;
-        //        e.Ended = true;
-        //    }
-        //} 
     }
 }

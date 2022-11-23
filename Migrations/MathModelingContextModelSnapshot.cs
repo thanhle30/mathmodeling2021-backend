@@ -29,6 +29,9 @@ namespace MathModeling21.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsPublished")
                         .HasColumnType("bit");
 
@@ -48,8 +51,9 @@ namespace MathModeling21.Migrations
                             Id = 1,
                             Body = @"This page shares my best articles to read on topics like health, happiness, creativity, productivity and more. The central question that drives my work is, “How can we live better?” To answer that question, I like to write about science-based ways to solve practical problems.
 You’ll find interesting articles to read on topics like how to stop procrastinating as well as personal recommendations like my list of the best books to read and my minimalist travel guide.Ready to dive in? You can use the categories below to browse my best articles.",
+                            Image = "asffsfssfshoian-26.jpg",
                             IsPublished = false,
-                            PostDate = new DateTime(2021, 9, 1, 9, 14, 45, 840, DateTimeKind.Local).AddTicks(9289),
+                            PostDate = new DateTime(2021, 9, 9, 22, 36, 11, 626, DateTimeKind.Local).AddTicks(5680),
                             Title = "Sample Article"
                         });
                 });
@@ -79,7 +83,13 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                     b.Property<bool>("IsBigEvent")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignUpLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -96,7 +106,9 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                             DateStart = new DateTime(2021, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "asffsfssfshoian-26.jpg",
                             IsBigEvent = true,
-                            Name = "Sample Event"
+                            Location = "182 Lương Thế Vinh, Thanh Xuân, Hà Nội",
+                            Name = "Sample Event",
+                            SignUpLink = ""
                         });
                 });
 
@@ -235,7 +247,7 @@ You’ll find interesting articles to read on topics like how to stop procrastin
                             Email = "levinguyen@email.co",
                             FullName = "Levi Nguyen",
                             PhoneNumber = "0379111111",
-                            PostDate = new DateTime(2021, 9, 1, 9, 14, 45, 845, DateTimeKind.Local).AddTicks(3476),
+                            PostDate = new DateTime(2021, 9, 9, 22, 36, 11, 630, DateTimeKind.Local).AddTicks(4290),
                             ReviewStatus = false
                         });
                 });

@@ -31,6 +31,7 @@ namespace MathModeling21.Models
                 {
                     Id = 1,
                     Title = "Sample Article",
+                    Image = "asffsfssfshoian-26.jpg",
                     Body = "This page shares my best articles to read on topics like health, happiness, creativity, productivity and more. The central question that drives my work is, “How can we live better?” To answer that question, I like to write about science-based ways to solve practical problems.\nYou’ll find interesting articles to read on topics like how to stop procrastinating as well as personal recommendations like my list of the best books to read and my minimalist travel guide.Ready to dive in? You can use the categories below to browse my best articles.",
                     PostDate = DateTime.Now,
                     IsPublished = false
@@ -44,8 +45,10 @@ namespace MathModeling21.Models
                     IsBigEvent = true,
                     Brief = "This Info Session covers math modeling.",
                     Body = "This Info Session covers fundamental knowledge about math modeling. This Info Session covers fundamental knowledge about math modeling.",
+                    Location = "182 Lương Thế Vinh, Thanh Xuân, Hà Nội",
                     DateStart = new DateTime(2021, 7, 23),
                     DateEnd = new DateTime(2021, 7, 25),
+                    SignUpLink = "",
                     Image = "asffsfssfshoian-26.jpg"
                 }
                 );
